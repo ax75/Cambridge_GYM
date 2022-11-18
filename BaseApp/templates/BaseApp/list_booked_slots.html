@@ -1,0 +1,50 @@
+{% extends 'BaseApp/login_form.html' %} 
+{% load static %}
+
+
+{% block "Image" %}{% endblock %}
+{% block "Form" %}
+
+<div class="" style="width:100%;">
+					
+					<span class="login100-form-title">
+						Booked Sessions
+					</span>
+
+                   <table class="table table-striped" style="width:100%;align:center;">
+                       <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Session Time</th>
+                        <th>Slot Date</th>
+                        <th>Created Date</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ses in sess %}
+                        <tr>
+                            <td>{{ ses.id }}</td>
+                            <td>{{ ses.slot }}</td>
+                            <td>{{ ses.slot_date }}</td>
+                            <td>{{ ses.created_date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+                   </table>
+
+					
+					
+
+					
+
+					<div class="text-center p-t-136">
+						<a class="txt2" href="{% url 'home' %}">
+							Navigate To Home
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+
+{% endblock %}

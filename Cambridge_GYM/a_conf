@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    ServerName fitness.cambridge.edu.in
+    #Alias /static /home/user/myproject/static
+
+    <Directory /home/kenshi/Project/WebApps/Cambridge/Cambridge_GYM/Cambridge_GYM>
+        <Files wsgi.py>
+            Require all granted
+        </Files>
+    </Directory>
+
+    WSGIDaemonProcess CambridgeGYM python-path=/home/kenshi/Project/WebApps/Cambridge/ python-home=/home/kenshi/Project/WebApps/Cambridge/venv
+    WSGIProcessGroup CambridgeGYM
+    WSGIScriptAlias / /home/kenshi/Project/WebApps/Cambridge/Cambridge_GYM/Cambridge_GYM/wsgi.py
+
+</VirtualHost>

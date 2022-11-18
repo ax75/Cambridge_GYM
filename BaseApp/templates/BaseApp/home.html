@@ -1,0 +1,48 @@
+{% extends 'BaseApp/login_form.html' %} 
+{% load static %}
+
+
+
+{% block "Form" %}
+
+<div class="login100-form validate-form" method="POST" action="{% url 'select_slot' %}">
+					{% csrf_token %}
+					<span class="login100-form-title">
+						Welcome, {{ user.get_full_name }}
+					</span>
+
+                   
+
+					<div class="container-login100-form-btn" style="margin-top:-50px">
+                        <a class="login100-form-btn" href="{% url 'select_date' %}">
+						<button class="login100-form-btn" type="submit">
+							Book Session
+						</button>
+                    </a>
+					</div>
+                    <div class="container-login100-form-btn">
+                        <a class="login100-form-btn" href="{% url 'list_booked_slots' %}">
+						<button class="login100-form-btn" type="submit">
+							Session Log
+						</button>
+                    </a>
+					</div>
+					<div class="container-login100-form-btn">
+                        <a class="login100-form-btn" href="{% url 'logout' %}" style="background-color:#ff5825">
+						<button class="login100-form-btn" style="background-color:#ff5825">
+							Logout
+						</button>
+                    </a>
+					</div>
+
+					
+
+					<div class="text-center p-t-136">
+						<a class="txt2" href="#">
+							
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+
+{% endblock %}

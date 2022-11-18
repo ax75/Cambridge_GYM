@@ -1,0 +1,84 @@
+{% extends 'BaseApp/login_form.html' %} 
+{% load static %}
+
+
+
+{% block "Form" %}
+
+<div class="login100-form validate-form" method="POST" action="{% url 'select_slot' %}">
+					{% csrf_token %}
+					<span class="login100-form-title" style="margin-bottom:-40px;">
+						Select Morning Slot
+					</span>
+
+                    {% for slot in morning_avail %}
+
+                    <form class="login100-form validate-form" method="POST" action="{% url 'confirm_slot_view' slot_date %}">    
+                        {% csrf_token %}                
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <input type="text" name="slot" value="{{ slot.id }}" hidden>
+						<button class="login100-form-btn" type="submit">{{ slot.session_time }}</button>
+					</div>
+                    </form>
+
+                    {% endfor %}
+					{% for slot in morning_full %}
+
+                    <form class="login100-form validate-form" method="POST" action="{% url 'confirm_slot_view' slot_date %}">    
+                        {% csrf_token %}                
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <input type="text" name="slot" value="{{ slot.id }}" hidden>
+						<button class="login100-form-btn" style="background-color:#333333;" disabled>{{ slot.session_time }} - Full</button>
+					</div>
+                    </form>
+
+                    {% endfor %}
+                    
+                    
+                    
+                    <br>
+
+                    <span class="login100-form-title" style="margin-bottom:-40px; margin-top:30px;">
+						Select Evening Slot
+					</span>
+
+					{% for slot in evening_avail %}
+
+                    <form class="login100-form validate-form" method="POST" action="{% url 'confirm_slot_view' slot_date %}">    
+                        {% csrf_token %}                
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <input type="text" name="slot" value="{{ slot.id }}" hidden>
+						<button class="login100-form-btn" type="submit">{{ slot.session_time }}</button>
+					</div>
+                    </form>
+
+                    {% endfor %}
+					{% for slot in evening_full %}
+
+                    <form class="login100-form validate-form" method="POST" action="{% url 'confirm_slot_view' slot_date %}">    
+                        {% csrf_token %}                
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <input type="text" name="slot" value="{{ slot.id }}" hidden>
+						<button class="login100-form-btn" type="submit">{{ slot.session_time }}</button>
+					</div>
+                    </form>
+
+                    {% endfor %}
+					
+					<div class="container-login100-form-btn" style="margin-bottom:0px;">
+						<button class="login100-form-btn" style="background-color:#ff8f6d;" onclick="window.history.back()" >
+							Back
+						</button>
+					</div>
+
+					
+
+					<div class="text-center p-t-30">
+						<a class="txt2" href="{% url 'home' %}">
+							Navigate To Home
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</div>
+
+{% endblock %}
